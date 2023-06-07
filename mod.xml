@@ -1,3 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<data name="Combat Carrier VLS" author="Bredroll" description="Launch laser guided missiles from the carrier">
+<data name="Combat Carrier VLS + Captain Controls"
+      author="Bredroll+Mr Scoot" description="Launch laser guided missiles from the carrier, Merged with Captains Control mod by Mr Scoot">
 </data>
