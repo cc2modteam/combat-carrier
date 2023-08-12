@@ -2748,14 +2748,16 @@ function get_ui_vehicle_chassis_attachments(vehicle)
                 --  3  ciws bl
                 --  4  ciws br
                 --  5  aa
-                { i=6, x=16, y=-14 },
+                { i=5, x=16, y=2},
                 --  6  aa
-                { i=5, x=16, y=2 },
+                { i=6, x=16, y=-14 },
 
                 --  7  160mm
+                { i=7, x=-20, y=2 },
                 --  8  cruise missile
+                { i=8, x=-4, y=2 },
                 --  9  illumination flare
-                { i=9, x=-20, y=2 },
+                { i=9, x=-20, y=-14 },
                 -- 10  mast b ? type=4
                 -- 11  torp l
                 -- 12  torp r
