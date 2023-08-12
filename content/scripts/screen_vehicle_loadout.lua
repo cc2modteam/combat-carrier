@@ -76,20 +76,20 @@ function get_selected_vehicle_attachment_options(attachment_type, attachment_ind
             -- aa missiles / ciws / flare launcher
             add_attachment_option(attachment_options, e_game_object_type.attachment_turret_carrier_ciws)
             add_attachment_option(attachment_options, e_game_object_type.attachment_turret_carrier_missile)
+            add_attachment_option(attachment_options, e_game_object_type.attachment_turret_carrier_main_gun)
             add_attachment_option(attachment_options, e_game_object_type.attachment_turret_droid)
         end
 
         if attachment_index == 7 or attachment_index == 8 then
-            -- 160 gun / cruise
+            -- 160 gun / cruise /
             add_attachment_option(attachment_options, e_game_object_type.attachment_turret_carrier_main_gun)
-            add_attachment_option(attachment_options, e_game_object_type.attachment_turret_carrier_missile)
+            add_attachment_option(attachment_options, e_game_object_type.attachment_turret_carrier_missile_silo)
             add_attachment_option(attachment_options, e_game_object_type.attachment_turret_carrier_ciws)
         end
 
         if attachment_index == 9 then
-            -- flare launcher / 30mm rifle
+            -- flare launcher / rifle
             add_attachment_option(attachment_options, e_game_object_type.attachment_turret_carrier_flare_launcher)
-            add_attachment_option(attachment_options, e_game_object_type.attachment_turret_carrier_ciws)
             add_attachment_option(attachment_options, e_game_object_type.attachment_turret_15mm)
         end
 
