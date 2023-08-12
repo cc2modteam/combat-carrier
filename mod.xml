@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<data name="Combat Carrier VLS + Captain Controls"
-      author="Bredroll+Mr Scoot" description="Launch laser guided missiles from the carrier, Merged with Captains Control mod by Mr Scoot">
+<data name="Battle Carrier Refit + Captain Controls"
+      author="Bredroll+Mr Scoot" description="
+      Refit various weapons on the carrier prior to launch.
+
+      Beware, each weapon has advantages and problems, make your choices wisely.
+
+      Merged with Captains Control mod by Mr Scoot">
 </data>

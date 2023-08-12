@@ -44,15 +44,15 @@ function do_combat_carrier_setup()
     if drydock then
         print(string.format("drydock id is %d", drydock:get_id()))
 
-        print("setup weapons..1")
+        --print("setup weapons..1")
         drydock:set_attached_vehicle_attachment(0, 14, e_game_object_type.attachment_hardpoint_missile_laser)
-        print("setup weapons..2")
+        --print("setup weapons..2")
         drydock:set_attached_vehicle_attachment(0, 15, e_game_object_type.attachment_hardpoint_missile_laser)
-        print("setup weapons..3")
+        --print("setup weapons..3")
         drydock:set_attached_vehicle_attachment(0, 16, e_game_object_type.attachment_hardpoint_missile_laser)
-        print("setup weapons..4")
+        --print("setup weapons..4")
         drydock:set_attached_vehicle_attachment(0, 17, e_game_object_type.attachment_hardpoint_missile_laser)
-        print("setup weapons done")
+        --print("setup weapons done")
     end
 end
 
