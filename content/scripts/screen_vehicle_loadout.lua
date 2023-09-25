@@ -72,6 +72,11 @@ function get_selected_vehicle_attachment_options(attachment_type, attachment_ind
         end
     else
         -- not launched, carrier loadout options screen
+        if attachment_index == 1 or attachment_index == 2 then
+            add_attachment_option(attachment_options, e_game_object_type.attachment_turret_carrier_ciws)
+            add_attachment_option(attachment_options, e_game_object_type.attachment_turret_15mm)
+        end
+
         if attachment_index == 5 or attachment_index == 6 then
             -- aa missiles / ciws / flare launcher
             add_attachment_option(attachment_options, e_game_object_type.attachment_turret_carrier_ciws)
@@ -90,7 +95,7 @@ function get_selected_vehicle_attachment_options(attachment_type, attachment_ind
         if attachment_index == 9 then
             -- flare launcher / rifle
             add_attachment_option(attachment_options, e_game_object_type.attachment_turret_carrier_flare_launcher)
-            add_attachment_option(attachment_options, e_game_object_type.attachment_turret_15mm)
+            add_attachment_option(attachment_options, e_game_object_type.attachment_turret_droid)
         end
 
         if attachment_index > 13 and attachment_index < 18 then
@@ -119,6 +124,10 @@ function update(screen_w, screen_h, ticks)
     local ret, err = pcall(_update, screen_w, screen_h, ticks)
     if not ret then
         print(err)
+    end
+
+    if g_installed_new_hardware == 0 then
+        pcall(do_combat_carrier_setup)
     end
 end
 
@@ -561,3 +570,68 @@ function find_drydock()
     return nil
 end
 
+
+g_installed_new_hardware = 0
+
+
+function do_combat_carrier_setup()
+    g_installed_new_hardware = 1
+    print("setup combat carrier..")
+    local drydock = find_drydock()
+    if drydock then
+        print(string.format("drydock id is %d", drydock:get_id()))
+
+        --print("setup weapons..1")
+        drydock:set_attached_vehicle_attachment(0, 14, e_game_object_type.attachment_hardpoint_missile_laser)
+        --print("setup weapons..2")
+        drydock:set_attached_vehicle_attachment(0, 15, e_game_object_type.attachment_hardpoint_missile_laser)
+        --print("setup weapons..3")
+        drydock:set_attached_vehicle_attachment(0, 16, e_game_object_type.attachment_hardpoint_missile_laser)
+        --print("setup weapons..4")
+        drydock:set_attached_vehicle_attachment(0, 17, e_game_object_type.attachment_hardpoint_missile_laser)
+        --print("setup weapons done")
+    end
+end
+
+core_get_ui_vehicle_chassis_attachments = get_ui_vehicle_chassis_attachments
+
+function get_ui_vehicle_chassis_attachments(vehicle)
+    local vehicle_definition_index = vehicle:get_definition_index()
+    if vehicle_definition_index == e_game_object_type.chassis_carrier then
+        local vehicle_attachment_rows = {
+            {
+                -- indexes
+                --  0  mast a ? type=2
+                --  1  ciws fl
+                { i=1, x=-20, y=-20},
+                --  2  ciws fr
+                { i=2, x=16, y=-20},
+                --  3  ciws bl
+                --  4  ciws br
+                --  5  aa
+                { i=5, x=16, y=12},
+                --  6  aa
+                { i=6, x=16, y=-04 },
+
+                --  7  160mm
+                { i=7, x=-20, y=12 },
+                --  8  cruise missile
+                { i=8, x=-4, y=12 },
+                --  9  illumination flare
+                { i=9, x=-20, y=-4 },
+                -- 10  mast b ? type=4
+                -- 11  torp l
+                -- 12  torp r
+                -- 13  countermeasures
+
+                -- rear island VLS
+                { i=14, x=-20, y=34 },
+                { i=15, x=-12, y=34 },
+                { i=16, x=-4,  y=34 },
+                { i=17, x=4,   y=34 },
+            }
+        }
+        return vehicle_attachment_rows
+    end
+    return core_get_ui_vehicle_chassis_attachments(vehicle)
+end
